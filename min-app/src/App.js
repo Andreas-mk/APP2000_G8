@@ -15,7 +15,6 @@ function App() {
 
 import { initializeApp } from 'firebase/app';
 
-// TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBUkxpITh4XGVD573zVXnQVRPUwJ25b89k",
   authDomain: "prosjektoppgave23.firebaseapp.com",
@@ -30,12 +29,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Get a list of cities from your database
+/* Get a list of cars from your database
 async function getBiler(db) {
-  const carCol = collection(db, 'Biler');
+  const carCol = collection(db, 'Usikker');
   const carSnapshot = await getDocs(carCol);
   const carList = carSnapshot.docs.map(doc => doc.data());
   return carList;
 }
+*/
 
 export default App;

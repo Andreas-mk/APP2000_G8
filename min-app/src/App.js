@@ -1,6 +1,8 @@
 import './App.css';
 import React from 'react';
 import MapContainer from './mapContainer';
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
 
 function App() {
   return (

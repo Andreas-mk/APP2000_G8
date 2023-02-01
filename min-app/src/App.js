@@ -2,20 +2,9 @@ import './App.css';
 import React from 'react';
 import MapContainer from './mapContainer';
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
-function App() {
-  return (
 
-    <div className="App">
-      <h1 className="App-header">Test</h1>
-      <MapContainer />
-      
-    </div>
-  );
-}
-
-import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUkxpITh4XGVD573zVXnQVRPUwJ25b89k",
@@ -39,5 +28,14 @@ async function getBiler(db) {
   return carList;
 }
 */
+function App() {
+  return (
 
+    <div className="App">
+      <h1 className="App-header">Test</h1>
+      <MapContainer />
+      
+    </div>
+  );
+}
 export default App;

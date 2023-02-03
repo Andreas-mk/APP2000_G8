@@ -22,7 +22,7 @@ const db = getFirestore(app);
 
 /* Get a list of cars from your database
 async function getBiler(db) {
-  const carCol = collection(db, 'Usikker');
+  const carCol = collection(db, 'Usikker'); 
   const carSnapshot = await getDocs(carCol);
   const carList = carSnapshot.docs.map(doc => doc.data());
   return carList;

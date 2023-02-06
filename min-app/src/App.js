@@ -1,5 +1,10 @@
 import './App.css';
 import './Firebase.js';
+import React from 'react';
+import MapContainer from './mapContainer';
+import Sidebar from './Sidebar';
+
+
 
 
 /* Get a list of cars from your database
@@ -13,10 +18,11 @@ async function getBiler(db) {
 function App() {
   return (
 
-    <div className="App">
-      <h1 className="App-header">Test</h1>
+    <div className="App" id="outer-container">
+            <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
+      <div id="page-wrap">
       <MapContainer />
-      
+      </div>
     </div>
   );
 }

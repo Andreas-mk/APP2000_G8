@@ -1,5 +1,4 @@
 import "./App.css";
-
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue } from "firebase/database";
 
@@ -17,3 +16,12 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
+
+function hentTilMeny(){
+
+    let referanse = ref(db, '/El-Biler');
+    onValue(referanse, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+    })
+}

@@ -17,7 +17,7 @@
     "start": "react-scripts start",
     "eject": "react-scripts eject",
     "build": "v16.17.0",
-      "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "eslintConfig": {
     "extends": [
@@ -36,9 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  
-   
-    "devDependencies": {}
-  
+  }
 }

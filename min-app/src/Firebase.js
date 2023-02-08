@@ -1,6 +1,6 @@
 import "./App.css";
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, get, child } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBUkxpITh4XGVD573zVXnQVRPUwJ25b89k",
@@ -17,11 +17,29 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 
-function hentTilMeny(){
+/*function hentTilMeny(){
 
     let referanse = ref(db, '/El-Biler');
     onValue(referanse, (snapshot) => {
         const data = snapshot.val();
         console.log(data);
     })
+}*/
+function henteDatabaseInf() {
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, "0/modell")).then((snapshot) => {
+    if(snapshot.exists()){
+      //console.log(snapshot.val())
+      let newLi = document.getElementById("li");
+      let textnode = document.createTextNode(snapshot.val());
+      newLi.appendChild(textnode);
+      document.getElementById("liste2").appendChild(newLi);
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
 }
+
+export default henteDatabaseInf;

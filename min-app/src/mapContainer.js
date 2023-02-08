@@ -7,12 +7,7 @@ function MapContainer() {
         const map = new window.google.maps.Map(document.getElementById('map'), {
             zoom: 11,
             center: {lat: 59.4121414, lng: 9.0366312},
-            zoomControl: Boolean,
-            mapTypeControl: Boolean,
-            scaleControl: Boolean,
-            steetViewControl: Boolean,
-            rotateControl: Boolean,
-            fullScreenControll: Boolean,
+            disableDefaultUI: true,
         });
 
         setMap(map);

@@ -26,12 +26,30 @@ const db = getDatabase();
     })
 }*/
 henteDatabaseInf();
+
+// Her henter vi inn el-biler fra databasen og legger de til i en tabell
+// Deretter tar vi dataen i lista og lager "li"-elementer for å vise det i menyen på skjermen
 function henteDatabaseInf() {
   const dbRef = ref(getDatabase());
-  get(child(dbRef, "El-biler/Bmw/I3/Rekkevidde"))
+  const tab = [];
+  let test = get(child(dbRef, "El-biler"))
     .then((snapshot) => {
       if (snapshot.exists()) {
-        console.log(snapshot.val());
+        const tab = Object.keys(snapshot.val());
+        // tab.push(snapshot.val());
+        console.log(tab);
+
+        let list = document.getElementById("liste");
+        // her er det kaos
+        /*
+        tab.forEach((item) => {
+          let a = document.createElement("a");
+          //document.getElementsByName("li").className = "menu-item";
+          a.className = "menu-item";
+          a.innerText = item;
+          list.appendChild(a);
+        });
+*/
         //let newLi = document.getElementById("li");
         //let textnode = document.createTextNode(snapshot.val());
         //newLi.appendChild(textnode);
@@ -43,6 +61,20 @@ function henteDatabaseInf() {
     .catch((error) => {
       console.error(error);
     });
+  let nyTest = JSON.stringify(test);
+  //console.log(nyTest);
+  console.log(tab);
 }
+/*
+function menyElementer() {
+  let list = document.getElementById("liste");
+
+  tab.forEach((item) => {
+    let li = document.createElement("a ");
+    li.innerText = item;
+    list.appendChild(li);
+  });
+}
+*/
 
 export default henteDatabaseInf;

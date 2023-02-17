@@ -25,21 +25,24 @@ const db = getDatabase();
         console.log(data);
     })
 }*/
+henteDatabaseInf();
 function henteDatabaseInf() {
   const dbRef = ref(getDatabase());
-  get(child(dbRef, "0/modell")).then((snapshot) => {
-    if(snapshot.exists()){
-      //console.log(snapshot.val())
-      let newLi = document.getElementById("li");
-      let textnode = document.createTextNode(snapshot.val());
-      newLi.appendChild(textnode);
-      document.getElementById("liste2").appendChild(newLi);
-    } else {
-      console.log("No data available");
-    }
-  }).catch((error) => {
-    console.error(error);
-  });
+  get(child(dbRef, "El-biler/Bmw/I3/Rekkevidde"))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+        //let newLi = document.getElementById("li");
+        //let textnode = document.createTextNode(snapshot.val());
+        //newLi.appendChild(textnode);
+        //document.getElementById("liste2").appendChild(newLi);
+      } else {
+        console.log("No data available");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 export default henteDatabaseInf;

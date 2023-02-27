@@ -52,4 +52,10 @@
   
   .bm-item:hover {
     color: #ffffff;
+  }
+  .menu-item{
+    z-index: 1;
   }  
+  #liste{
+    z-index: 1;
+  }

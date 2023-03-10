@@ -7,6 +7,7 @@
 }
 .bm-burger-bars {
     background: #373a47;
+    
 }
 .bm-burger-bars-hover {
     background: #a90000;
@@ -16,7 +17,8 @@
     width: 24px;
   }
   .bm-cross {
-    background: #bdc3c7;
+    background: #ff0000;
+    z-index: 2;
   }
   .bm-menu-wrap {
     position: absolute;
@@ -58,4 +60,5 @@
   }  
   #liste{
     z-index: 1;
+    background-color: #8d91a0;
   }

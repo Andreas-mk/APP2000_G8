@@ -19,11 +19,11 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 
 const merketab = [];
-henteDatabaseInf();
-function henteDatabaseInf() {
+henteDatabaseInf("Merke");
+function henteDatabaseInf(parameter) {
   const dbRef = ref(getDatabase());
   const tab = [];
-  const dbPath = "/Variant navn";
+  const dbPath = "/" + parameter + " navn";
   for (let i = 0; i < 27; i++) {
     // Use the onValue listener instead of the get method to receive realtime updates
     onValue(
@@ -36,11 +36,11 @@ function henteDatabaseInf() {
           // Use Object.values() to extract the values of the snapshot object as an array
           // const elBiler = Object.values(snapshot.val());
           if (!tab.includes(snapshot.val())) {
-            console.log(tab);
+            //console.log(tab);
             // Add each element of the elBiler array to the tab array
             tab.push(snapshot.val());
           } else {
-            console.log("ELSE");
+            //console.log("ELSE");
           }
 
           /*
@@ -73,12 +73,31 @@ function updateMenu(data) {
 
   // Iterate over the data array and create a new <a> element for each element
   data.forEach((item) => {
-    let a = document.createElement("li");
+    let id = "#";
+    let a = document.createElement("ul");
     a.className = "menu-item";
-    a.innerText = item;
+    // Setter tesla eller skoda i URL
+    if (item === "Tesla"){
+      id = "Tesla"
+    }else{
+      id = "Skoda"
+    }
+    a.innerHTML = `<a href="` + id + `">` + item + `</a>`; 
     list.appendChild(a);
+    a.onclick = hentUrl();
   });
 }
+
+// henter tesla eller skoda fra urlen og logger den i consolet
+// skal brukes til å hente undermeny og/eller rekkevidden
+async function hentUrl(){
+  let modell = window.location.href;
+  //modell.substring(23,27);
+  console.log(modell.substring(22,27));
+}
+
+
+
 
 export default henteDatabaseInf;
 

@@ -48,6 +48,7 @@ function MapContainer() {
 
   return (
     <div className="map-container">
+      <markerCircle />
       <div id="map" style={{ height: "100vh", width: "100%" }} />
     </div>
   );

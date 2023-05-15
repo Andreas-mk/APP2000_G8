@@ -93,7 +93,15 @@ function updateMenu(data) {
 async function hentUrl(){
   let modell = window.location.href;
   //modell.substring(23,27);
-  console.log(modell.substring(22,27));
+  let sistedel = modell.split('http://localhost:3000/')[1];
+  console.log(sistedel);
+
+  //return sistedel;
+}
+
+function hentRekkevidde(){
+ 
+
 }
 
 

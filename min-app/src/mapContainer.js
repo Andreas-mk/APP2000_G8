@@ -5,6 +5,7 @@ function MapContainer() {
 
   useEffect(() => {
     const map = new window.google.maps.Map(document.getElementById("map"), {
+      mapId: "c09c675c2a08801a",
       zoom: 10,
       center: { lat: 59.4121414, lng: 9.0366312 },
       disableDefaultUI: true,

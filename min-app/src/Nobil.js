@@ -3,12 +3,13 @@ import $ from 'jquery';
 
 const nobilKey = "6f128b7050b466c9a661f763435dc116";
 const url = "https://nobil.no/api/server/search.php?apiversion=3&apikey=" + nobilKey + "&action=search&type=stats_GetCountChargerConnectorsByConnectorTypeAndCapasity&countrycode=NOR&countycode=11&municipalitycode=1103&format=json"
-
+/*
 const print = () => {
     console.log('dette er en test');
 }
 console.log('ja');
 print();
+*/
 
 
 //res.setHeader('Access-Control-Allow-Origin', '*')
@@ -86,7 +87,7 @@ async function postman() {
         dataType: 'json'
     });
 }
-//postman();
+postman();
 
 async function cors() {
     async function postman() {
@@ -109,9 +110,9 @@ async function cors() {
         });
     }
 }
-cors();
+//cors();
 function printJsonResponse(data, textStatus, XMLHttpRequest) {
-    $("#jsonOutput").html(dump(data));
+    $("#jsonOutput").html(dump(data, textStatus));
 }
 
 

@@ -23,11 +23,11 @@ function MapContainer() {
 
   for (const mark in marker) {
     const markerCircle = new window.google.maps.Circle({
-      strokeColor: "#FF0000",
+      strokeColor: "#23bd29",
       strokeOpacity: 0.8,
       strokeWeight: 2,
-      fillColor: "FF00000",
-      fillOpcaity: 0.15,
+      fillColor: "#b2ec73",
+      fillOpacity: 0.1,
       map,
       center: marker[mark].center,
       radius: Math.sqrt(marker[mark].pop) * 1000,
@@ -36,14 +36,28 @@ function MapContainer() {
   // Retursirkel
   for (const mark in marker) {
     const markerCircle = new window.google.maps.Circle({
-      //strokeColor: "#FF2",
+      strokeColor: "#3287da",
       strokeOpacity: 0.8,
       strokeWeight: 2,
-      fillColor: "FFFF00",
-      fillOpcaity: 0.15,
+      fillColor: "#8fd5ff",
+      fillOpacity: 0.1,
+      map,
+      center: marker[mark].center,
+      radius: (Math.sqrt(marker[mark].pop) * 1000) / 2,
+    });
+  }
+
+  // Ladestasjonsirkel
+  for (const mark in marker) {
+    const markerCircle = new window.google.maps.Circle({
+      strokeColor: "#c10417",
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: "#e26078",
+      fillOpacity: 0.1,
       map,
       center: { lat: 59.3870756, lng: 9.1547351 },
-      radius: (Math.sqrt(marker[mark].pop) * 1000) / 2,
+      radius: (Math.sqrt(marker[mark].pop) * 1000),
     });
   }
 

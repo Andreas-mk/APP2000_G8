@@ -76,12 +76,12 @@ function updateMenu(data) {
     let a = document.createElement("li");
     a.className = "sideMenu";
     // Setter tesla eller skoda i URL
-    if (item === "Tesla"){
+    if (item === "Tesla") {
       id = "Tesla"
-    }else{
+    } else {
       id = "Skoda"
     }
-    a.innerHTML = `<a href="` + id + `">` + item + `</a>`; 
+    a.innerHTML = `<a href="` + id + `">` + item + `</a>`;
     list.appendChild(a);
     a.onclick = hentUrl;
   });
@@ -89,7 +89,7 @@ function updateMenu(data) {
 
 // henter tesla eller skoda fra urlen og logger den i consolet
 // skal brukes til å hente undermeny og/eller rekkevidden
-async function hentUrl(){
+async function hentUrl() {
   let modell = window.location.href;
   //modell.substring(23,27);
   let sistedel = modell.split('http://localhost:3000/')[1];
@@ -98,8 +98,8 @@ async function hentUrl(){
   //return sistedel;
 }
 
-function hentRekkevidde(){
- 
+function hentRekkevidde() {
+
 
 }
 

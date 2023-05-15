@@ -2,6 +2,7 @@ import './Firebase.js';
 import React from 'react';
 import MapContainer from './mapContainer';
 import Sidebar from './Sidebar';
+import './Nobil.js';
 
 
 /* Get a list of cars from your database
@@ -18,7 +19,7 @@ function App() {
     <div className="App" id="outer-container">
       <Sidebar />
       <MapContainer />
-      </div>
+    </div>
 
   );
 }

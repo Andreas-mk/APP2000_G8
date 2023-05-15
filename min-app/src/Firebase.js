@@ -1,6 +1,5 @@
-import "./App.css";
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, onValue, get, child } from "firebase/database";
+import { getDatabase, ref, onValue, child } from "firebase/database";
 import "./Sidebar.js";
 
 const firebaseConfig = {
@@ -19,11 +18,11 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase();
 
 const merketab = [];
-henteDatabaseInf();
-function henteDatabaseInf() {
+henteDatabaseInf("Merke");
+function henteDatabaseInf(parameter) {
   const dbRef = ref(getDatabase());
   const tab = [];
-  const dbPath = "/Variant navn";
+  const dbPath = "/" + parameter + " navn";
   for (let i = 0; i < 27; i++) {
     // Use the onValue listener instead of the get method to receive realtime updates
     onValue(
@@ -36,11 +35,11 @@ function henteDatabaseInf() {
           // Use Object.values() to extract the values of the snapshot object as an array
           // const elBiler = Object.values(snapshot.val());
           if (!tab.includes(snapshot.val())) {
-            console.log(tab);
+            //console.log(tab);
             // Add each element of the elBiler array to the tab array
             tab.push(snapshot.val());
           } else {
-            console.log("ELSE");
+            //console.log("ELSE");
           }
 
           /*
@@ -73,11 +72,35 @@ function updateMenu(data) {
 
   // Iterate over the data array and create a new <a> element for each element
   data.forEach((item) => {
+    let id = "#";
     let a = document.createElement("li");
-    a.className = "menu-item";
-    a.innerText = item;
+    a.className = "sideMenu";
+    // Setter tesla eller skoda i URL
+    if (item === "Tesla"){
+      id = "Tesla"
+    }else{
+      id = "Skoda"
+    }
+    a.innerHTML = `<a href="` + id + `">` + item + `</a>`; 
     list.appendChild(a);
+    a.onclick = hentUrl;
   });
+}
+
+// henter tesla eller skoda fra urlen og logger den i consolet
+// skal brukes til å hente undermeny og/eller rekkevidden
+async function hentUrl(){
+  let modell = window.location.href;
+  //modell.substring(23,27);
+  let sistedel = modell.split('http://localhost:3000/')[1];
+  console.log(sistedel);
+
+  //return sistedel;
+}
+
+function hentRekkevidde(){
+ 
+
 }
 
 export default henteDatabaseInf;

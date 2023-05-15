@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+//import AdvancedMarkerElement from "google/maps";
 
 function MapContainer() {
   const [map, setMap] = useState(null);
@@ -20,7 +21,22 @@ function MapContainer() {
       pop: 335,
     },
   };
+  /*   
+       // Default markør, brukers utgangspunkt .
+       new window.google.maps.AdvancedMarkerElement({
+         map,
+         position: map.center, // bytt ut med museklikk
+         title: "Startpunkt",
+       }); 
+     */
+  new window.google.maps.Marker({
+    position: { lat: 59.4121414, lng: 9.0366312 },
+    map,
+    title: "Startpunkt",
+  });
 
+
+  // Brukers utgangspunkt
   for (const mark in marker) {
     const markerCircle = new window.google.maps.Circle({
       strokeColor: "#23bd29",
@@ -33,6 +49,10 @@ function MapContainer() {
       radius: Math.sqrt(marker[mark].pop) * 1000,
     });
   }
+
+
+
+
   // Retursirkel
   for (const mark in marker) {
     const markerCircle = new window.google.maps.Circle({

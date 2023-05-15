@@ -1,6 +1,5 @@
-import "./App.css";
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, onValue, get, child } from "firebase/database";
+import { getDatabase, ref, onValue, child } from "firebase/database";
 import "./Sidebar.js";
 
 const firebaseConfig = {
@@ -74,8 +73,8 @@ function updateMenu(data) {
   // Iterate over the data array and create a new <a> element for each element
   data.forEach((item) => {
     let id = "#";
-    let a = document.createElement("ul");
-    a.className = "menu-item";
+    let a = document.createElement("li");
+    a.className = "sideMenu";
     // Setter tesla eller skoda i URL
     if (item === "Tesla"){
       id = "Tesla"
@@ -84,7 +83,7 @@ function updateMenu(data) {
     }
     a.innerHTML = `<a href="` + id + `">` + item + `</a>`; 
     list.appendChild(a);
-    a.onclick = hentUrl();
+    a.onclick = hentUrl;
   });
 }
 
@@ -103,9 +102,6 @@ function hentRekkevidde(){
  
 
 }
-
-
-
 
 export default henteDatabaseInf;
 

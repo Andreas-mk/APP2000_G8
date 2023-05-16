@@ -15,9 +15,8 @@ async function getBiler(db) {
 */
 function App() {
   return (
-
     <div className="App" id="outer-container">
-      <Sidebar />
+        <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
       <MapContainer />
     </div>
 

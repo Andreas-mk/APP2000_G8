@@ -1,7 +1,21 @@
 import React, {useState} from "react";
 import "./Sidebar.css";
+import { slide as Menu } from 'react-burger-menu';
 
-const Sidebar = () => {
+
+
+
+export default props => {
+  return (
+    <Menu>
+      <a className="valg" href="/">
+        Tesla
+      </a>
+    </Menu>
+  );
+};
+
+/*const Sidebar = () => {
 
   const[isVisible, setIsVisible] = useState(false);
 
@@ -10,7 +24,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div>
+   <div>
     <button onClick={toggleVisibility}>Vis elbil liste</button>
     {isVisible && (
       <div className="sideMenu">
@@ -29,7 +43,8 @@ const Sidebar = () => {
       </div>
     )}
     </div>
+    
   );
 };
-
-export default Sidebar;
+*/
+//export default Sidebar;

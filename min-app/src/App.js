@@ -1,5 +1,6 @@
 import './Firebase.js';
 import React from 'react';
+import KartKlikk from './KartKlikk';
 import MapContainer from './mapContainer';
 import Sidebar from './Sidebar';
 import './Nobil.js';
@@ -17,7 +18,7 @@ function App() {
   return (
     <div className="App" id="outer-container">
         <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
-      <MapContainer />
+      <KartKlikk />
     </div>
 
   );

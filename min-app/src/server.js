@@ -3,7 +3,7 @@ const app = express();
 
 app.get('/api/my-endpoint', (req, res) => {
     // Handle the incoming request here
-    res.json({ message: 'Hello, world!' });
+    res.json({ message: 'JSON object her' });
 });
 
 const port = 3001;

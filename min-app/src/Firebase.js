@@ -97,12 +97,12 @@ async function hentUrl(){
   let sistedel = modell.split('http://localhost:3000/')[1];
   console.log(sistedel);
 
-  //return sistedel;
+  return sistedel;
 }
 
-function hentRekkevidde(){
+function hentRekkevidde(urlData){
   // en moetode som henter rekkevidden til en spesifik bil
-
+  henteDatabaseInf("Modell");
 
 }
 

@@ -31,11 +31,11 @@ function henteDatabaseInf(parameter) {
         if (snapshot.exists()) {
           // Clear the tab array before adding new elements
           //tab.length = 0;
-          const elBiler = [];
+          //const elBiler = [];
           // Use Object.values() to extract the values of the snapshot object as an array
-          // const elBiler = Object.values(snapshot.val());
+           const elBiler = Object.values(snapshot.val());
           if (!tab.includes(snapshot.val())) {
-            //console.log(tab);
+            console.log(tab);
             // Add each element of the elBiler array to the tab array
             tab.push(snapshot.val());
           } else {
@@ -53,6 +53,8 @@ function henteDatabaseInf(parameter) {
           //console.log("test");
           // Update the menu items with the new data
 
+
+          // kaller på metoden for å legge bilene inn i menyen
           updateMenu(tab);
         } else {
           console.log("No data available");
@@ -73,32 +75,33 @@ function updateMenu(data) {
   // Iterate over the data array and create a new <a> element for each element
   data.forEach((item) => {
     let id = "#";
-    let a = document.createElement("li");
-    a.className = "sideMenu";
+    
+    let a = document.createElement("ul");
+    a.className = "item-list";
     // Setter tesla eller skoda i URL
-    if (item === "Tesla") {
+    if (item === "Tesla"){
       id = "Tesla"
-    } else {
+    }else{
       id = "Skoda"
     }
-    a.innerHTML = `<a href="` + id + `">` + item + `</a>`;
+    a.innerHTML = `<a href="` + id + `">` + item + `</a>`; 
     list.appendChild(a);
-    a.onclick = hentUrl;
+    a.onclick = hentUrl();
   });
 }
 
 // henter tesla eller skoda fra urlen og logger den i consolet
 // skal brukes til å hente undermeny og/eller rekkevidden
-async function hentUrl() {
+async function hentUrl(){
   let modell = window.location.href;
-  //modell.substring(23,27);
   let sistedel = modell.split('http://localhost:3000/')[1];
   console.log(sistedel);
 
   //return sistedel;
 }
 
-function hentRekkevidde() {
+function hentRekkevidde(){
+  // en moetode som henter rekkevidden til en spesifik bil
 
 
 }

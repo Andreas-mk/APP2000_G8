@@ -1,5 +1,5 @@
 .sideMenu {
-    background-color: grey;
+    background-color: rgb(255, 255, 255);
     position: fixed;
     height: 100%;
     width: 10rem;
@@ -74,4 +74,12 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .bm-item:hover {
   color: #ffffff;
+}
+
+.menu-item{
+  z-index: 1;
+}  
+#liste{
+  z-index: 1;
+  background-color: #ffffff;
 }

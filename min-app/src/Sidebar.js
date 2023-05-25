@@ -1,17 +1,14 @@
 import React, {useState} from "react";
 import "./Sidebar.css";
 import { slide as Menu } from 'react-burger-menu';
+import "./Firebase.js";
 
 
 
-
+// her må den hente fra databasen, hvordan gjorde jeg det?? -- AMK
 export default props => {
   return (
-    <Menu>
-      <a className="valg" href="/">
-        Tesla
-      </a>
-    </Menu>
+    <Menu id = "liste"></Menu>
   );
 };
 

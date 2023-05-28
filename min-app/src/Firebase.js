@@ -44,17 +44,6 @@ function henteDatabaseInf(parameter) {
             //console.log("ELSE");
           }
 
-          /*
-        elBiler.forEach((el) => {
-          tab.push(el);
-          console.log(el);
-          console.log(tab);
-        });
-        */
-          //console.log(elBiler[0]);
-          //console.log("test");
-          // Update the menu items with the new data
-
 
           // kaller på metoden for å legge bilene inn i menyen
           updateMenu(tab);
@@ -80,8 +69,7 @@ onValue(
   (snapshot) => {
     if (snapshot.exists()) {
       // Clear the tab array before adding new elements
-      //tab.length = 0;
-      //const elBiler = [];
+    
       // Use Object.values() to extract the values of the snapshot object as an array
        const data = Object.values(snapshot.val());
 
@@ -91,7 +79,6 @@ onValue(
     } else {
       console.log("No data available");
     }
-    //return rekke;
 });
 }
 
@@ -120,16 +107,6 @@ function updateMenu(data) {
     list.appendChild(a);
     
     //console.log(knappTab);
-
-    /* prøver noe ved hjelp av et google søk, funker ikke enda
-    a.click = function(){
-      console.log("Kjører click funksjon!!");
-      a.preventDefault();
-      if (a.getElementById() === "Tesla"){
-        console.log("Denne funker kanskje?");
-      }
-      }*/
-      //let meny = document.getElementById("liste")
 
       // denne funker men er problemer med hva den skal gjøre 
       a.addEventListener("click", function(event){

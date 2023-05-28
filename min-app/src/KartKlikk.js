@@ -1,4 +1,6 @@
 import React, {useState, useEffect } from "react";
+import { Rekkevidde } from "./Firebase";
+import { radius } from "./Firebase";
 
 function KartKlikk() {
     const [map, setMap] = useState(null);
@@ -27,7 +29,7 @@ function KartKlikk() {
             const nyPlass = new window.google.maps.Marker({
                 position: event.latLng,
                 map: map,
-                title: "Ny plass",
+                title: "Start posisjon",
             });
 
         if (circle) {
@@ -39,7 +41,7 @@ function KartKlikk() {
                 fillOpacity: 0.1,
                 map,
                 center: event.latLng,
-                radius: 30000,
+                radius: parseInt(radius*1000),
             });
             setMarker(nyPlass);
             setCircle(nySirkel);
@@ -52,7 +54,7 @@ function KartKlikk() {
                 fillOpacity: 0.1,
                 map,
                 center: event.latLng,
-                radius: 30000,
+                radius: parseInt(radius*1000),
             });
 
             setMarker(nyPlass);
@@ -61,6 +63,8 @@ function KartKlikk() {
         };
     }
 
+
+    
     useEffect(() => {
         let lyttPaaKlikk;
         if (map) {

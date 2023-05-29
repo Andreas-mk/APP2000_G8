@@ -45,7 +45,7 @@ async function nyttOmråde(lat, long, rekkevidde) {
         }
     })
 }
-//nyttOmråde()
+
 // Oppretter en route til /posisjon
 app.post('/api/posisjon', (req, res) => {
     try {

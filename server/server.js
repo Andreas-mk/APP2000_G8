@@ -1,28 +1,23 @@
 // npm run dev i terminal
 
+/* Hele filen kodet av Jesper */
 const express = require('express')
 const app = express()
 const cors = require("cors")
-//const $ = require('jquery') // ble brukt tidligere, se kommentar nederst i fila
 const axios = require('axios')
+//const $ = require('jquery') // ble brukt tidligere, se kommentar nederst i fila
 
 const nobilApiKey = "6f128b7050b466c9a661f763435dc116";
-
+// Cross origin resource sharing. Tillater dataoverføring mellom 2 forskjellige domener.
 app.use(cors({
-    //origin: 'https://vercel.app'
-    origin: '*' // Tillater alle domener
+    //origin: 'https://app-2000-g8.vercel.app'
+    origin: '*' // Tillater alle domener, 
 }))
 
 
 app.use(express.json()) // For å kunne parse json
 
-// gjør dette til en funksjon -> putt i en egen nobil fil, også importer den hit?
-
-// disse oppdateres etter museklikk på client-siden
-//const lat = '59.91673'
-//const long = '10.24782'
-//const rekkevidde = '5000' //denne er i meter
-
+// Funksjonen sender en GET request til Nobils database for ladestasjoner
 async function nyttOmråde(lat, long, rekkevidde) {
     app.get('/api/ladestasjoner', async (req, res) => {
         try {
@@ -46,7 +41,7 @@ async function nyttOmråde(lat, long, rekkevidde) {
     })
 }
 
-// Oppretter en route til /posisjon
+// Oppretter en route til /api/posisjon
 app.post('/api/posisjon', (req, res) => {
     try {
         // Behandler innkommende JSON slik at det kan brukes i API-kallet til Nobils database
@@ -66,9 +61,7 @@ app.post('/api/posisjon', (req, res) => {
 
 });
 
-//app.listen(5000, () => { console.log("Server startet på port 5000") })
-
-
+app.listen(5000, () => { console.log("Server startet på port 5000") })
 
 /*
 --- JSONP kall for cross-domain API kall uten server ---
@@ -89,12 +82,3 @@ $.ajax({
 });
 
 */
-
-// Struktur for å hente alt fra firebase
-/*
-const merkeTab = hentFraFirebase('Merke navn'); // dbPath blir parameter
-const modellTab = hentFraFirebase('Modell navn');
-const variantTab = hentFraFirebase('Variant navn'); 
-const rekkeviddeTab = hentFraFirebase('WLTP Rekkevidde'); 
-*/
-

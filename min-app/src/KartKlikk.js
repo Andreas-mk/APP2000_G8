@@ -60,6 +60,7 @@ function KartKlikk() {
                 map: map,
                 center: event.latLng,
                 radius: parseInt(radius) * 500, // Elbilenes rekkevidde er oppgitt i km i database, mens radius på kartet TROR jeg er meter, men da blir sirkelen kjempestor
+
             });
 
             setMarker(nyMarker);

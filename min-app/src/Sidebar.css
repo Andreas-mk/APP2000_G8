@@ -62,7 +62,7 @@ Sidebar wrapper design
 }  
 #liste{
   z-index: 1;
-  background-color: #999999;
+  background-color: #292929;
 }
 /*Fjerner linjen under lite elementene 
   Andreas*/
@@ -77,5 +77,5 @@ a:link, a:visited{
 /*Legger til farge når bruker hovrer over elementene
   Andreas*/
 a:hover{
-  color: #011064;
+  color: #c2c505;
 }

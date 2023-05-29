@@ -64,6 +64,7 @@ export function Rekkevidde(variant) {
       if (snapshot.exists()) {
         const data = Object.values(snapshot.val())
         radius = snapshot.val();
+        console.log(radius);
     } else {
       console.log("No data available");
     }
@@ -112,7 +113,7 @@ function updateMenu(data) {
 
     }
 
-    a.innerHTML = `<a id= ` + id + ` href="#">` + item + `</a>`;
+    a.innerHTML = `<a id= ` + "bil" + ` href="#">` + item + `</a>`;
 
     list.appendChild(a);
     
@@ -123,11 +124,12 @@ function updateMenu(data) {
         let Url = window.location.href;
         console.log(event.target.textContent);
         window.history.pushState({ path: Url }, '', event.target.textContent);
-        
+
+          
           // Kjører ut rekkevidde
           for(let i=0; i<tab.length; i++){
             if(tab[i] === event.target.textContent){
-               radius = Rekkevidde(i);
+              Rekkevidde(i);
             }
           }
         })

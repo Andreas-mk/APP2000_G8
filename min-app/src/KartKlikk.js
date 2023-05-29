@@ -1,3 +1,6 @@
+/* For å få frem kart komponenter har vi brukt disse kildene
+    https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+    https://developers.google.com/maps/documentation/javascript/examples/circle-simple */
 import React, { useState, useEffect } from "react";
 import { radius } from "./Firebase";
 import axios from 'axios';

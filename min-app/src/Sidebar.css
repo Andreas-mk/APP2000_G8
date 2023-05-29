@@ -1,4 +1,5 @@
-
+/* For å lage sidemenyen har vi brukt denne kilden
+   https://www.digitalocean.com/community/tutorials/react-react-burger-menu-sidebar */
 .sideMenu {
     background-color: rgb(65, 64, 64);
     position: fixed;

@@ -1,3 +1,6 @@
+/*Her har vi brukt firebase sin dokumentasjon for å skrive kode
+  https://firebase.google.com/docs/database/web/read-and-write */
+   
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue, child, get } from "firebase/database";
 import "./Sidebar.js";

@@ -70,7 +70,7 @@ function KartKlikk() {
 
             const latLong = event.latLng
             console.log('Sender ' + latLong + ' til Express server')
-            axios.post('http://app-2000-g8.vercel.app/posisjon', { posisjon: latLong })
+            axios.post('http://app-2000-g8.vercel.app/api/posisjon', { posisjon: latLong })
                 .then(function (response) {
                     console.log(response)
                 })
@@ -84,7 +84,7 @@ function KartKlikk() {
             //const ladestasjonNavn = []
             //tegnLadestasjoner(map); // Markørene dukket aldri opp på kartet når koden under var i en egen funksjon
             // Henter data fra tjener med Fetch (tjeneren inneholder API-kall til Nobil.no sin server med ladestasjoner)
-            fetch('http://app-2000-g8.vercel.app/ladestasjoner').then(
+            fetch('http://app-2000-g8.vercel.app/api/ladestasjoner').then(
                 //axios.get('http://localhost:5000/ladestasjoner')
                 response => response.json()
             ).then(

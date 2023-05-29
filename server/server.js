@@ -24,7 +24,7 @@ app.use(express.json()) // For å kunne parse json
 //const rekkevidde = '5000' //denne er i meter
 
 async function nyttOmråde(lat, long, rekkevidde) {
-    app.get('/ladestasjoner', async (req, res) => {
+    app.get('/api/ladestasjoner', async (req, res) => {
         try {
             const response = await axios.get('https://nobil.no/api/server/search.php', {
                 params: {
@@ -47,7 +47,7 @@ async function nyttOmråde(lat, long, rekkevidde) {
 }
 //nyttOmråde()
 // Oppretter en route til /posisjon
-app.post('/posisjon', (req, res) => {
+app.post('/api/posisjon', (req, res) => {
     try {
         // Behandler innkommende JSON slik at det kan brukes i API-kallet til Nobils database
         // JSON objektet må deles opp i 2 stringer (lat og long)

@@ -34,7 +34,7 @@ function KartKlikk() {
                 fillOpacity: 0.1,
                 map: map,
                 center: event.latLng,
-                radius: parseInt(radius),
+                radius: parseInt(radius)*1000/2,
             });
 
             setMarker(nyMarker);

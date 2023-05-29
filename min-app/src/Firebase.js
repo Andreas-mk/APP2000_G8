@@ -16,14 +16,12 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-//firebaseConfig.initializeApp(firebaseConfig)
 const db = getDatabase();
 const tab = [];
 const merketab = [];
 henteDatabaseInf("Variant");
 function henteDatabaseInf(parameter) {
   const dbRef = ref(getDatabase());
-  //const tab = [];
   const dbPath = "/" + parameter + " navn";
   for (let i = 0; i < 27; i++) {
     // Use the onValue listener instead of the get method to receive realtime updates
@@ -32,19 +30,14 @@ function henteDatabaseInf(parameter) {
       (snapshot) => {
         if (snapshot.exists()) {
           // Clear the tab array before adding new elements
-          //tab.length = 0;
-          //const elBiler = [];
           // Use Object.values() to extract the values of the snapshot object as an array
            const elBiler = Object.values(snapshot.val());
           if (!tab.includes(snapshot.val())) {
-            //console.log(tab);
             // Add each element of the elBiler array to the tab array
             tab.push(snapshot.val());
           } else {
-            //console.log("ELSE");
+            
           }
-
-
           // kaller på metoden for å legge bilene inn i menyen
           updateMenu(tab);
         } else {
@@ -59,6 +52,7 @@ function henteDatabaseInf(parameter) {
 }
 
 // Henter ut radusien til en bil fra databasen
+// AMK
 export let radius = 30;
 export function Rekkevidde(variant){
 let dbstien = '/WLTP Rekkevidde'
@@ -73,9 +67,8 @@ onValue(
       // Use Object.values() to extract the values of the snapshot object as an array
        const data = Object.values(snapshot.val());
 
-        //console.log(snapshot.val());
         radius = snapshot.val();
-        //console.log(radius);
+        
     } else {
       console.log("No data available");
     }
@@ -83,7 +76,7 @@ onValue(
 }
 
 
-//const knappTab = []; -- tenkte å lagre <a> i en liste for å bruke dem
+// ??
 function updateMenu(data) {
   let list = document.getElementById("liste");
   // Remove all existing menu items before adding new ones
@@ -95,57 +88,60 @@ function updateMenu(data) {
     
     let a = document.createElement("ul");
     a.className = "item-list";
-    // Setter tesla eller skoda i URL
-    if (item === "Tesla"){
-      id = "Tesla"
-    }else{
-      id = "Skoda"
+    // brukes for å sette hvilkewn bil som er trykket på i URL
+    switch(item){
+      case "Long Range AWD": id = "Long Range AWD";
+      break;
+      case "Long Range AWD 7-s": id = "Long Range AWD 7-s";
+      break;
+      case "Performance AWD": id = "Performance AWD";
+      break;
+      case "Performance AWD 7-s": id = "Performance AWD 7-s";
+      break;
+      case "iV50": id = "iV50";
+      break;
+      case "iV60": id = "iV60";
+      break;
+      case "iV80": id = "iV80";
+      break;
+      case "iV80X": id = "iV80X";
+      break;
+      case "iV80 Max": id = "iV80 Max";
+      break;
+      case "iV80 Sportline": id = "iV80 Sportline";
+      break;
+      case "iV80 Ultra": id = "iV80 Ultra";
+      break;
+      case "iV80X Sportline": id = "iV80X Sportline";
+      break;
+
     }
-    //a.innerHTML = `<a id= ` + id + ` href="` + id + `">` + item + `</a>`;
+    
     a.innerHTML = `<a id= ` + id + ` href="#">` + item + `</a>`; 
     
     list.appendChild(a);
     
-    //console.log(knappTab);
-
-      // denne funker men er problemer med hva den skal gjøre 
+     
       a.addEventListener("click", function(event){
-        //event.preventDefault();
-        let nyUrl = window.location.href;
+        
+        // legger inn hvilken bil som er trykket på i URLen 
+        let Url = window.location.href;
         console.log(event.target.textContent);
-        window.history.replaceState(null,null, )
+        window.history.pushState({ path: Url }, '', event.target.textContent);
         
           // Kjører ut rekkevidde
           for(let i=0; i<tab.length; i++){
             if(tab[i] === event.target.textContent){
                radius = Rekkevidde(i);
             }
-          } 
-          
-        
-          
+          }
         })
-        //console.log(radius);
   });
 }
 
-// henter tesla eller skoda fra urlen og logger den i consolet
-// skal brukes til å hente undermeny og/eller rekkevidden
-export async function hentUrl(){
-  let modell = window.location.href;
-  //  må endres til vercel linken senere 
-  let sistedel = modell.split('http://localhost:3000/')[1];
-  console.log(sistedel);
 
-  return sistedel;
-}
 
-function hentRekkevidde(urlData){
-  // en moetode som henter rekkevidden til en spesifik bil
-  henteDatabaseInf("Modell");
 
-}
 
 export default henteDatabaseInf;
-//export default hentMerke;
-//export default henteDatabaseInf;
+

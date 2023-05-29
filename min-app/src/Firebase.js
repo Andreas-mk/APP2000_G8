@@ -36,7 +36,7 @@ function henteDatabaseInf(parameter) {
             // Add each element of the elBiler array to the tab array
             tab.push(snapshot.val());
           } else {
-            
+
           }
           // kaller på metoden for å legge bilene inn i menyen
           updateMenu(tab);
@@ -68,19 +68,11 @@ export function Rekkevidde(variant) {
         const data = Object.values(snapshot.val());
 
         radius = snapshot.val();
-<<<<<<< HEAD
-        
-    } else {
-      console.log("No data available");
-    }
-});
-=======
         //console.log(radius);
       } else {
         console.log("No data available");
       }
     });
->>>>>>> dd0e452a030c13e42cac0c3929d033def157a2c8
 }
 
 
@@ -96,78 +88,45 @@ function updateMenu(data) {
 
     let a = document.createElement("ul");
     a.className = "item-list";
-<<<<<<< HEAD
     // brukes for å sette hvilkewn bil som er trykket på i URL
-    switch(item){
+    switch (item) {
       case "Long Range AWD": id = "Long Range AWD";
-      break;
+        break;
       case "Long Range AWD 7-s": id = "Long Range AWD 7-s";
-      break;
+        break;
       case "Performance AWD": id = "Performance AWD";
-      break;
+        break;
       case "Performance AWD 7-s": id = "Performance AWD 7-s";
-      break;
+        break;
       case "iV50": id = "iV50";
-      break;
+        break;
       case "iV60": id = "iV60";
-      break;
+        break;
       case "iV80": id = "iV80";
-      break;
+        break;
       case "iV80X": id = "iV80X";
-      break;
+        break;
       case "iV80 Max": id = "iV80 Max";
-      break;
+        break;
       case "iV80 Sportline": id = "iV80 Sportline";
-      break;
+        break;
       case "iV80 Ultra": id = "iV80 Ultra";
-      break;
+        break;
       case "iV80X Sportline": id = "iV80X Sportline";
-      break;
+        break;
 
     }
-    
-    a.innerHTML = `<a id= ` + id + ` href="#">` + item + `</a>`; 
-    
-    list.appendChild(a);
-    
-     
-      a.addEventListener("click", function(event){
-        
-        // legger inn hvilken bil som er trykket på i URLen 
-        let Url = window.location.href;
-        console.log(event.target.textContent);
-        window.history.pushState({ path: Url }, '', event.target.textContent);
-        
-          // Kjører ut rekkevidde
-          for(let i=0; i<tab.length; i++){
-            if(tab[i] === event.target.textContent){
-               radius = Rekkevidde(i);
-            }
-          }
-        })
-  });
-}
 
-=======
-    // Setter tesla eller skoda i URL
-    if (item === "Tesla") {
-      id = "Tesla"
-    } else {
-      id = "Skoda"
-    }
-    //a.innerHTML = `<a id= ` + id + ` href="` + id + `">` + item + `</a>`;
     a.innerHTML = `<a id= ` + id + ` href="#">` + item + `</a>`;
 
     list.appendChild(a);
 
-    //console.log(knappTab);
-
-    // denne funker men er problemer med hva den skal gjøre 
     a.addEventListener("click", function (event) {
-      //event.preventDefault();
-      let nyUrl = window.location.href;
+
+      // legger inn hvilken bil som er trykket på i URLen 
+      let Url = window.location.href;
       console.log(event.target.textContent);
-      window.history.replaceState(null, null,)
+      window.history.pushState({ path: Url }, '', event.target.textContent);
 
       // Kjører ut rekkevidde
       for (let i = 0; i < tab.length; i++) {
@@ -175,31 +134,9 @@ function updateMenu(data) {
           radius = Rekkevidde(i);
         }
       }
-
-
-
     })
-    //console.log(radius);
   });
 }
-
-// henter tesla eller skoda fra urlen og logger den i consolet
-// skal brukes til å hente undermeny og/eller rekkevidden
-export async function hentUrl() {
-  let modell = window.location.href;
-  //  må endres til vercel linken senere 
-  let sistedel = modell.split('http://localhost:3000/')[1];
-  console.log(sistedel);
->>>>>>> dd0e452a030c13e42cac0c3929d033def157a2c8
-
-
-<<<<<<< HEAD
-=======
-function hentRekkevidde(urlData) {
-  // en moetode som henter rekkevidden til en spesifik bil
-  henteDatabaseInf("Modell");
->>>>>>> dd0e452a030c13e42cac0c3929d033def157a2c8
-
 
 export default henteDatabaseInf;
 

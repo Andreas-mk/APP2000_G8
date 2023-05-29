@@ -87,7 +87,7 @@ async function postman() {
         dataType: 'json'
     });
 }
-postman();
+//postman();
 
 async function cors() {
     async function postman() {

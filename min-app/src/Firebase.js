@@ -31,7 +31,7 @@ function henteDatabaseInf(parameter) {
         if (snapshot.exists()) {
           // Clear the tab array before adding new elements
           // Use Object.values() to extract the values of the snapshot object as an array
-           const elBiler = Object.values(snapshot.val());
+          const elBiler = Object.values(snapshot.val());
           if (!tab.includes(snapshot.val())) {
             // Add each element of the elBiler array to the tab array
             tab.push(snapshot.val());
@@ -54,25 +54,33 @@ function henteDatabaseInf(parameter) {
 // Henter ut radusien til en bil fra databasen
 // AMK
 export let radius = 30;
-export function Rekkevidde(variant){
-let dbstien = '/WLTP Rekkevidde'
-const dbRef = ref(getDatabase());
-const db = getDatabase();
-onValue(
-  child(dbRef, variant + dbstien),
-  (snapshot) => {
-    if (snapshot.exists()) {
-      // Clear the tab array before adding new elements
-    
-      // Use Object.values() to extract the values of the snapshot object as an array
-       const data = Object.values(snapshot.val());
+export function Rekkevidde(variant) {
+  let dbstien = '/WLTP Rekkevidde'
+  const dbRef = ref(getDatabase());
+  const db = getDatabase();
+  onValue(
+    child(dbRef, variant + dbstien),
+    (snapshot) => {
+      if (snapshot.exists()) {
+        // Clear the tab array before adding new elements
+
+        // Use Object.values() to extract the values of the snapshot object as an array
+        const data = Object.values(snapshot.val());
 
         radius = snapshot.val();
+<<<<<<< HEAD
         
     } else {
       console.log("No data available");
     }
 });
+=======
+        //console.log(radius);
+      } else {
+        console.log("No data available");
+      }
+    });
+>>>>>>> dd0e452a030c13e42cac0c3929d033def157a2c8
 }
 
 
@@ -85,9 +93,10 @@ function updateMenu(data) {
   // Iterate over the data array and create a new <a> element for each element
   data.forEach((item) => {
     let id = "#";
-    
+
     let a = document.createElement("ul");
     a.className = "item-list";
+<<<<<<< HEAD
     // brukes for å sette hvilkewn bil som er trykket på i URL
     switch(item){
       case "Long Range AWD": id = "Long Range AWD";
@@ -139,8 +148,57 @@ function updateMenu(data) {
   });
 }
 
+=======
+    // Setter tesla eller skoda i URL
+    if (item === "Tesla") {
+      id = "Tesla"
+    } else {
+      id = "Skoda"
+    }
+    //a.innerHTML = `<a id= ` + id + ` href="` + id + `">` + item + `</a>`;
+    a.innerHTML = `<a id= ` + id + ` href="#">` + item + `</a>`;
+
+    list.appendChild(a);
+
+    //console.log(knappTab);
+
+    // denne funker men er problemer med hva den skal gjøre 
+    a.addEventListener("click", function (event) {
+      //event.preventDefault();
+      let nyUrl = window.location.href;
+      console.log(event.target.textContent);
+      window.history.replaceState(null, null,)
+
+      // Kjører ut rekkevidde
+      for (let i = 0; i < tab.length; i++) {
+        if (tab[i] === event.target.textContent) {
+          radius = Rekkevidde(i);
+        }
+      }
 
 
+
+    })
+    //console.log(radius);
+  });
+}
+
+// henter tesla eller skoda fra urlen og logger den i consolet
+// skal brukes til å hente undermeny og/eller rekkevidden
+export async function hentUrl() {
+  let modell = window.location.href;
+  //  må endres til vercel linken senere 
+  let sistedel = modell.split('http://localhost:3000/')[1];
+  console.log(sistedel);
+>>>>>>> dd0e452a030c13e42cac0c3929d033def157a2c8
+
+
+<<<<<<< HEAD
+=======
+function hentRekkevidde(urlData) {
+  // en moetode som henter rekkevidden til en spesifik bil
+  henteDatabaseInf("Modell");
+>>>>>>> dd0e452a030c13e42cac0c3929d033def157a2c8
 
 
 export default henteDatabaseInf;

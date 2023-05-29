@@ -1,9 +1,9 @@
 import './Firebase.js';
-import React from 'react';
-import KartKlikk from './KartKlikk';
+import React, { useEffect, useState } from 'react';
+import KartKlikk, { tegnStasjonsMarkører } from './KartKlikk';
 import MapContainer from './mapContainer';
 import Sidebar from './Sidebar';
-import './Nobil.js';
+//import '../../server/Nobil.js';
 
 
 /* Get a list of cars from your database
@@ -15,12 +15,17 @@ async function getBiler(db) {
 }
 */
 function App() {
+
+
   return (
     <div className="App" id="outer-container">
-        <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
+      <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
       <KartKlikk />
     </div>
 
   );
 }
+
+
+
 export default App;

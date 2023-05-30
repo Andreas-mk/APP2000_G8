@@ -1,5 +1,6 @@
 /*Her har vi brukt firebase sin dokumentasjon for å skrive kode
-  https://firebase.google.com/docs/database/web/read-and-write */
+  https://firebase.google.com/docs/database/web/read-and-write 
+  https://firebase.google.com/docs/database/web/start#web-version-9 */
    
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue, child, get } from "firebase/database";

@@ -1,13 +1,13 @@
 // npm run dev i terminal
 
-/* Hele filen kodet av Jesper */
+/* Hele filen kodet av Jesper Kraft */
 const express = require('express')
 const app = express()
 const cors = require("cors")
 const axios = require('axios')
 //const $ = require('jquery') // ble brukt tidligere, se kommentar nederst i fila
 
-const nobilApiKey = "6f128b7050b466c9a661f763435dc116";
+const nobilApiKey = "6f128b7050b466c9a661f763435dc116"; // Skjules i Vercel (envelope)
 // Cross origin resource sharing. Tillater dataoverføring mellom 2 forskjellige domener.
 app.use(cors({
     //origin: 'https://app-2000-g8.vercel.app'
@@ -17,9 +17,9 @@ app.use(cors({
 
 app.use(express.json()) // For å kunne parse json
 
-// Funksjonen sender en GET request til Nobils database for ladestasjoner
+// Funksjonen sender en GET request til Nobils database for ladestasjoner. Selve strukturen på API kallet er fra Nobils dokumentasjon
 async function nyttOmråde(lat, long, rekkevidde) {
-    app.get('/api/ladestasjoner', async (req, res) => {
+    app.get('/ladestasjoner', async (req, res) => {
         try {
             const response = await axios.get('https://nobil.no/api/server/search.php', {
                 params: {
@@ -41,8 +41,8 @@ async function nyttOmråde(lat, long, rekkevidde) {
     })
 }
 
-// Oppretter en route til /api/posisjon
-app.post('/api/posisjon', (req, res) => {
+// Oppretter en route til /posisjon
+app.post('/posisjon', (req, res) => {
     try {
         // Behandler innkommende JSON slik at det kan brukes i API-kallet til Nobils database
         // JSON objektet må deles opp i 2 stringer (lat og long)
@@ -51,13 +51,19 @@ app.post('/api/posisjon', (req, res) => {
         console.log(lat);
         const long = klikkPosisjon.lng.toString()
         console.log(long);
+
+        // Rekkevidden må multipliseres
+        const rekkevidde = req.body.rekkevidde.toString()
+        console.log(rekkevidde);
+
         // Kaller på funksjonen som henter ladestasjoner fra Nobil med parametre fra klienten. Sender også Status 200 - OK
         // Rekkevidden burde hentes fra elbil-databasen
-        nyttOmråde(lat, long, '250000').then(console.log("Ladestasjoner hentet"))
+        nyttOmråde(lat, long, rekkevidde).then(console.log("Ladestasjoner hentet"))
     } catch (error) {
         console.error('Error - ', error)
         res.status(500).json({ error: 'Feil oppstått' })
     }
+
 
 });
 

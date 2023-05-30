@@ -44,7 +44,7 @@ function KartKlikk() {
             const latLong = event.latLng
             console.log('Sender ' + latLong + ' og rekkevidde ' + radius + ' til Express server')
             // http://app-2000-g8.vercel.app/api/posisjon // Tiltenkt sti på vercel (nettsiden)
-            axios.post('http://localhost:5000/posisjon', { posisjon: latLong, rekkevidde: radius + '000' })
+            axios.post('http://localhost:5000/api/posisjon', { posisjon: latLong, rekkevidde: radius + '000' })
                 .then(function (response) {
                     console.log(response)
                 })
@@ -59,7 +59,7 @@ function KartKlikk() {
             // Henter data fra tjener med Fetch (tjeneren inneholder API-kall til Nobil.no sin server med ladestasjoner)
             // Kodet av Jesper Kraft
             // http://app-2000-g8.vercel.app/api/ladestasjoner
-            fetch('http://localhost:5000/ladestasjoner').then(
+            fetch('http://localhost:5000/api/ladestasjoner').then(
                 response => response.json()
             ).then(
                 data => {

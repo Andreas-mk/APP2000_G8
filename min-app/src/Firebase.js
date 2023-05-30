@@ -1,3 +1,7 @@
+/*Her har vi brukt firebase sin dokumentasjon for å skrive kode
+  https://firebase.google.com/docs/database/web/read-and-write 
+  https://firebase.google.com/docs/database/web/start#web-version-9 */
+   
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue, child, get } from "firebase/database";
 import "./Sidebar.js";
@@ -64,6 +68,7 @@ export function Rekkevidde(variant) {
       if (snapshot.exists()) {
         const data = Object.values(snapshot.val())
         radius = snapshot.val();
+        console.log(radius);
     } else {
       console.log("No data available");
     }
@@ -82,10 +87,12 @@ function updateMenu(data) {
     let id = "#";
 
     let a = document.createElement("ul");
+    let overskrift = document.createElement("p");
     a.className = "item-list";
-    // brukes for å sette hvilkewn bil som er trykket på i URL
+    // brukes for å sette hvilkewn bil som er trykket på i URL og overskrift i menyen
+    // Sikkert ikke opptimal men fungerer
     switch (item) {
-      case "Long Range AWD": id = "Long Range AWD";
+      case "Long Range AWD": id = "Long Range AWD";overskrift.innerHTML = `<p>Tesla</p>`;
         break;
       case "Long Range AWD 7-s": id = "Long Range AWD 7-s";
         break;
@@ -93,8 +100,8 @@ function updateMenu(data) {
         break;
       case "Performance AWD 7-s": id = "Performance AWD 7-s";
         break;
-      case "iV50": id = "iV50";
-        break;
+      case "iV50": id = "iV50"; overskrift.innerHTML = `<p>Skoda</p>`;
+      break;
       case "iV60": id = "iV60";
         break;
       case "iV80": id = "iV80";
@@ -111,10 +118,12 @@ function updateMenu(data) {
         break;
 
     }
+    //overskrift.innerHTML = `<p>Tesla</p>`;
+    a.innerHTML = `<a id= ` + "bil" + ` href="#">` + item + `</a>`;
 
-    a.innerHTML = `<a id= ` + id + ` href="#">` + item + `</a>`;
-
+    list.appendChild(overskrift);
     list.appendChild(a);
+    
     
      // behandler når bruker trykker på en bil variant
       a.addEventListener("click", function(event){
@@ -123,11 +132,12 @@ function updateMenu(data) {
         let Url = window.location.href;
         console.log(event.target.textContent);
         window.history.pushState({ path: Url }, '', event.target.textContent);
-        
+
+          
           // Kjører ut rekkevidde
           for(let i=0; i<tab.length; i++){
             if(tab[i] === event.target.textContent){
-               radius = Rekkevidde(i);
+              Rekkevidde(i);
             }
           }
         })

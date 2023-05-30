@@ -1,3 +1,6 @@
+/* For å få frem kart komponenter har vi brukt disse kildene
+    https://developers.google.com/maps/documentation/javascript/adding-a-google-map
+    https://developers.google.com/maps/documentation/javascript/examples/circle-simple */
 import React, { useState, useEffect } from "react";
 import { radius } from "./Firebase";
 import axios from 'axios';
@@ -31,7 +34,6 @@ function KartKlikk() {
                 map: map,
                 center: event.latLng,
                 radius: parseInt(radius) * 500, // Elbilenes rekkevidde er oppgitt i km i database, mens radius på kartet er meter, men da blir sirkelen kjempestor
-
             });
 
             setMarker(nyMarker);

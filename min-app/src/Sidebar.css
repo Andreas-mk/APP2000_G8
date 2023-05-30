@@ -1,4 +1,5 @@
-
+/* For å lage sidemenyen har vi brukt denne kilden
+   https://www.digitalocean.com/community/tutorials/react-react-burger-menu-sidebar */
 .sideMenu {
     background-color: rgb(65, 64, 64);
     position: fixed;
@@ -62,7 +63,7 @@ Sidebar wrapper design
 }  
 #liste{
   z-index: 1;
-  background-color: #999999;
+  background-color: #292929;
 }
 /*Fjerner linjen under lite elementene 
   Andreas*/
@@ -77,5 +78,8 @@ a:link, a:visited{
 /*Legger til farge når bruker hovrer over elementene
   Andreas*/
 a:hover{
-  color: #011064;
+  color: #c2c505;
+}
+p{
+  color: #fffefe;
 }

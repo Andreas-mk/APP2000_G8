@@ -44,7 +44,7 @@ function KartKlikk() {
             const latLong = event.latLng
             console.log('Sender ' + latLong + ' og rekkevidde ' + radius + ' til Express server')
             // http://app-2000-g8.vercel.app/api/posisjon // Tiltenkt sti på vercel (nettsiden)
-            axios.post('http://localhost:5000/posisjon', { posisjon: latLong, rekkevidde: radius + '0000' })
+            axios.post('http://localhost:5000/posisjon', { posisjon: latLong, rekkevidde: radius + '000' })
                 .then(function (response) {
                     console.log(response)
                 })

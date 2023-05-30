@@ -1,4 +1,4 @@
-// npm run dev i terminal
+// npm run dev i terminal i server-mappa for å kjøre tjeneren
 
 /* Hele filen kodet av Jesper Kraft */
 const express = require('express')

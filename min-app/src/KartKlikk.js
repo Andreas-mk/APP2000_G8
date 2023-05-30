@@ -38,10 +38,11 @@ function KartKlikk() {
             setCircle(nySirkel);
 
             // Her sender vi posisjon og rekkevidde, slik at brukeren får ladestasjoner rundt der hen klikket på kartet
-            // Kodet av Jesper
+            // Kodet av Jesper Kraft
             const latLong = event.latLng
-            console.log('Sender ' + latLong + ' til Express server')
-            axios.post('http://app-2000-g8.vercel.app/api/posisjon', { posisjon: latLong })
+            console.log('Sender ' + latLong + ' og rekkevidde ' + radius + ' til Express server')
+            // http://app-2000-g8.vercel.app/api/posisjon // Tiltenkt sti på vercel (nettsiden)
+            axios.post('http://localhost:5000/posisjon', { posisjon: latLong, rekkevidde: radius + '0000' })
                 .then(function (response) {
                     console.log(response)
                 })
@@ -51,34 +52,42 @@ function KartKlikk() {
 
 
 
-           
+
             // Markørene dukket aldri opp på kartet når koden under var i en egen funksjon
             // Henter data fra tjener med Fetch (tjeneren inneholder API-kall til Nobil.no sin server med ladestasjoner)
-            fetch('http://app-2000-g8.vercel.app/api/ladestasjoner').then(
+            // Kodet av Jesper Kraft
+            // http://app-2000-g8.vercel.app/api/ladestasjoner
+            fetch('http://localhost:5000/ladestasjoner').then(
                 response => response.json()
             ).then(
                 data => {
                     // Henter posisjonene til alle ladestasjoner innenfor rekkevidden, legger de til i en liste som brukes til å lage markører på kartet
                     const ladestasjonPos = []
                     const ladestasjonNavn = []
-                    console.log(data)
-                    for (let i = 0; i < data.chargerstations.length; i++) {
-                        ladestasjonNavn.push(data.chargerstations[i].csmd.Street)
-                        // Posisjonen må behandles. Vi får en string, men må gjøre det om til to desimaltall i et objekt
-                        const posisjon = data.chargerstations[i].csmd.Position;
-                        const floats = posisjon.slice(1, -1).split(",");
-                        const lat = parseFloat(floats[0]);
-                        const long = parseFloat(floats[1]);
-                        ladestasjonPos.push({ lat: lat, lng: long })
+                    const ladeMarkører = [] // For å kunne fjerne markører
+                    //console.log(data)
+                    if (data.chargerstations == null) {
+                        console.log('Ingen ladestasjoner funnet!')
+                    } else {
+                        for (let i = 0; i < data.chargerstations.length; i++) {
+                            ladestasjonNavn.push(data.chargerstations[i].csmd.Street)
+                            // Posisjonen må behandles. Vi får en string, men må gjøre det om til to desimaltall i et objekt
+                            const posisjon = data.chargerstations[i].csmd.Position;
+                            const floats = posisjon.slice(1, -1).split(",");
+                            const lat = parseFloat(floats[0]);
+                            const long = parseFloat(floats[1]);
+                            ladestasjonPos.push({ lat: lat, lng: long })
 
-                        new window.google.maps.Marker({
-                            map: map,
-                            position: ladestasjonPos[i],
-                            title: data.chargerstations[i].csmd.Street,
-                            icon: {
-                                url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" // Ladestasjonene er blå ikoner
-                            }
-                        })
+                            const ladeMarkør = new window.google.maps.Marker({
+                                map: map,
+                                position: ladestasjonPos[i],
+                                title: data.chargerstations[i].csmd.Street,
+                                icon: {
+                                    url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" // Ladestasjonene er blå ikoner
+                                }
+                            })
+                            ladeMarkører.push(ladeMarkør)
+                        }
                     }
                 }
             )
